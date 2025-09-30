@@ -2,10 +2,10 @@ function runTut07
 % makes and runs the model and plots the results
 model = "tut07";
 tEnd = 500;
-rng(6)
+seed = 6;
 
 model_generator(model); 
-out = model_simulator(model, tEnd);
+out = model_simulator(model, tEnd, "seed", seed);
 plotResults(out, tEnd)
 end
 
@@ -75,6 +75,7 @@ nexttile(3)
 stairs(out.qLen.t, out.qLen.y);
 grid("on");
 xlim([0, tEnd])
+ylim([0, 10])
 title("Queue length");
 xlabel("t")
 end
