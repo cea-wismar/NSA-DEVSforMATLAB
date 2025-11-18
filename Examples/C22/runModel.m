@@ -1,6 +1,6 @@
 function runModel(model)
 % makes and runs model and plots results
-% Demo: runModel("fixFifoA")
+% Demo: runModel("c22FixFifoA")
 
 tEnd = 140;
  

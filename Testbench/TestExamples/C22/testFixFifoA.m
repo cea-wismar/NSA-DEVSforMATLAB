@@ -3,7 +3,7 @@ function [out] = testFixFifoA(showPlot)
     showPlot = false;
   end
 
-  model = "fixFifoA";
+  model = "c22FixFifoA";
   tEnd = 140;
   
   model_generator(model);
