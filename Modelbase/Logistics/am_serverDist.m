@@ -1,7 +1,7 @@
-classdef am_expserver < handle
+classdef am_serverDist < handle
 %% Description
-%  processes one entity in time tS, where tS is an exponentially
-%  distributed random number
+%  processes one entity in time tS, where tS is a random number with given
+%  distribution
 %% Ports
 %  inputs: 
 %    in   incoming entities
@@ -16,7 +16,11 @@ classdef am_expserver < handle
 %  sig:    next switching time
 %% System Parameters
 %  name:     object name
-%  tS:       mean service time
+%  distName: distribution name (Constant/Exponential/Triangular)
+%  distPara: distribution parameters
+%            Constant     [a]      constant value
+%            Exponential  [a]      mean value
+%            Triangular   [a,m,b]  [min, most, max]
 %  tau:      input delay
 %  debug:    model debug level
 
@@ -26,23 +30,40 @@ classdef am_expserver < handle
     sig
     tSNext
     name
-    tS
+    distName
+    distPara
     tau
     debug
     epsilon
   end
   
   methods
-    function obj = am_expserver(name, tS, tau, debug)
+    function obj = am_serverDist(name, distName, distPara, tau, debug)
       obj.s = "idle";
       obj.E = [];
       obj.sig = [inf,0];
       obj.name = name;
-      obj.tS = tS;
+      obj.distName = distName;
+      obj.distPara = distPara;
       obj.debug = debug;
       obj.epsilon = get_epsilon();
       obj.tau = tau;
-      obj.tSNext = -obj.tS*log(rand());
+
+      % Check input para compliance
+      try
+        switch obj.distName
+          case {"Constant", "Exponential"}
+            assert(isscalar(obj.distPara));
+          case "Triangular"
+            assert(numel(obj.distPara)==3);
+          otherwise
+            error("Name of distribution is unknown.")
+        end
+      catch
+        error(obj.name + ": Distribution parameters do not match.")
+      end
+
+      obj.tSNext = distributionFcn(obj.distName, obj.distPara);
     end
     
 		function delta(obj,e,x)
@@ -62,7 +83,7 @@ classdef am_expserver < handle
               obj.s = "busy";
               obj.E = x.in;
               obj.sig = [obj.tSNext,0];
-              obj.tSNext = -obj.tS*log(1-rand());
+              obj.tSNext = distributionFcn(obj.distName, obj.distPara);
             end
           case "busy"
             if ~isempty(x.in)
@@ -78,7 +99,7 @@ classdef am_expserver < handle
          obj.s = "busy";     % unnecessary, is busy anyhow
          obj.E = x.in;
          obj.sig = [obj.tSNext,0];
-         obj.tSNext = -obj.tS*log(1-rand());
+         obj.tSNext = distributionFcn(obj.distName, obj.distPara);
         end
       end
 

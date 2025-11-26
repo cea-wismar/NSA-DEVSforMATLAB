@@ -36,19 +36,19 @@ function test_blocklib_delay1(testCase)
   verifyEqual(testCase, act_out, testDelay1_out)
   rmpath("TestBlocklib/Logistics/Delay");
 end
-function test_blocklib_expserver(testCase)
-  addpath("TestBlocklib/Logistics/Expserver");
-  act_out = testExpserver();
-  load("testExpserver_out.mat");
-  verifyEqual(testCase, act_out, testExpserver_out)
-  rmpath("TestBlocklib/Logistics/Expserver");
-end
 function test_blocklib_gate(testCase)
   addpath("TestBlocklib/Logistics/Gate");
   act_out = testGate();
   load("testGate_out.mat");
   verifyEqual(testCase, act_out, testGate_out)
   rmpath("TestBlocklib/Logistics/Gate");
+end
+function test_blocklib_isentity(testCase)
+  addpath("TestBlocklib/Logistics/Isentity");
+  act_out = testIsentity();
+  load("testIsentity_out.mat");
+  verifyEqual(testCase, act_out, testIsentity_out)
+  rmpath("TestBlocklib/Logistics/Isentity");
 end
 function test_blocklib_nserver_case1(testCase)
   addpath("TestBlocklib/Logistics/Nserver");
@@ -78,6 +78,34 @@ function test_blocklib_nserver1(testCase)
   verifyEqual(testCase, act_out, testNserver1_out)
   rmpath("TestBlocklib/Logistics/Nserver");
 end
+function test_blocklib_nserverDist(testCase)
+  addpath("TestBlocklib/Logistics/NserverDist");
+  act_out = testNserverDist();
+  load("testNserverDist_out.mat");
+  verifyEqual(testCase, act_out, testNserverDist_out)
+  rmpath("TestBlocklib/Logistics/NserverDist");
+end
+function test_blocklib_nserverDist1(testCase)
+  addpath("TestBlocklib/Logistics/NserverDist");
+  act_out = testNserverDist1();
+  load("testNserverDist1_out.mat");
+  verifyEqual(testCase, act_out, testNserverDist1_out)
+  rmpath("TestBlocklib/Logistics/NserverDist");
+end
+function test_blocklib_nserverDist2(testCase)
+  addpath("TestBlocklib/Logistics/NserverDist");
+  act_out = testNserverDist2();
+  load("testNserverDist2_out.mat");
+  verifyEqual(testCase, act_out, testNserverDist2_out)
+  rmpath("TestBlocklib/Logistics/NserverDist");
+end
+function test_blocklib_nserverDist3(testCase)
+  addpath("TestBlocklib/Logistics/NserverDist");
+  act_out = testNserverDist3();
+  load("testNserverDist3_out.mat");
+  verifyEqual(testCase, act_out, testNserverDist3_out)
+  rmpath("TestBlocklib/Logistics/NserverDist");
+end
 function test_blocklib_queue(testCase)
   addpath("TestBlocklib/Logistics/Queue");
   act_out = testQueue();
@@ -91,6 +119,20 @@ function test_blocklib_queue1(testCase)
   load("testQueue1_out.mat");
   verifyEqual(testCase, act_out, testQueue1_out)
   rmpath("TestBlocklib/Logistics/Queue");
+end
+function test_blocklib_queue_en(testCase)
+  addpath("TestBlocklib/Logistics/Queue_en");
+  act_out = testQueue_en();
+  load("testQueue_en_out.mat");
+  verifyEqual(testCase, act_out, testQueue_en_out)
+  rmpath("TestBlocklib/Logistics/Queue_en");
+end
+function test_blocklib_queue_server(testCase)
+  addpath("TestBlocklib/Logistics/Queue_server");
+  act_out = test_cm_queue_server();
+  load("test_cm_queue_server_out.mat");
+  verifyEqual(testCase, act_out, test_cm_queue_server_out)
+  rmpath("TestBlocklib/Logistics/Queue_server");
 end
 function test_blocklib_readdata(testCase)
   addpath("TestBlocklib/Logistics/Readdata");
@@ -113,19 +155,40 @@ function test_blocklib_server_case2(testCase)
   verifyEqual(testCase, act_out, testServer_out)
   rmpath("TestBlocklib/Logistics/Server");
 end
+function test_blocklib_serverDist_case1(testCase)
+  addpath("TestBlocklib/Logistics/ServerDist");
+  act_out = testServerDist(1);
+  load("testServerDist_out1.mat");
+  verifyEqual(testCase, act_out, testServerDist_out)
+  rmpath("TestBlocklib/Logistics/ServerDist");
+end
+function test_blocklib_serverDist_case2(testCase)
+  addpath("TestBlocklib/Logistics/ServerDist");
+  act_out = testServerDist(2);
+  load("testServerDist_out2.mat");
+  verifyEqual(testCase, act_out, testServerDist_out)
+  rmpath("TestBlocklib/Logistics/ServerDist");
+end
+function test_blocklib_serverDist1(testCase)
+  addpath("TestBlocklib/Logistics/ServerDist");
+  act_out = testServerDist1();
+  load("testServerDist1_out.mat");
+  verifyEqual(testCase, act_out, testServerDist1_out)
+  rmpath("TestBlocklib/Logistics/ServerDist");
+end
+function test_blocklib_serverDist2(testCase)
+  addpath("TestBlocklib/Logistics/ServerDist");
+  act_out = testServerDist2();
+  load("testServerDist2_out.mat");
+  verifyEqual(testCase, act_out, testServerDist2_out)
+  rmpath("TestBlocklib/Logistics/ServerDist");
+end
 function test_blocklib_terminator(testCase)
   addpath("TestBlocklib/Logistics/Terminator");
   act_out = testTerminator();
   load("testTerminator_out.mat");
   verifyEqual(testCase, act_out, testTerminator_out)
   rmpath("TestBlocklib/Logistics/Terminator");
-end
-function test_blocklib_isentity(testCase)
-  addpath("TestBlocklib/Logistics/Isentity");
-  act_out = testIsentity();
-  load("testIsentity_out.mat");
-  verifyEqual(testCase, act_out, testIsentity_out)
-  rmpath("TestBlocklib/Logistics/Isentity");
 end
 function test_blocklib_unbatch(testCase)
   addpath("TestBlocklib/Logistics/Unbatch");
@@ -168,41 +231,6 @@ function test_blocklib_writedata(testCase)
   load("testWritedata_out.mat");
   verifyEqual(testCase, act_out, testWritedata_out)
   rmpath("TestBlocklib/Logistics/Writedata");
-end
-function test_blocklib_expnserver(testCase)
-  addpath("TestBlocklib/Logistics/Expnserver");
-  act_out = testExpnserver();
-  load("testExpnserver_out.mat");
-  verifyEqual(testCase, act_out, testExpnserver_out)
-  rmpath("TestBlocklib/Logistics/Expnserver");
-end
-function test_blocklib_expnserver1(testCase)
-  addpath("TestBlocklib/Logistics/Expnserver");
-  act_out = testExpnserver1();
-  load("testExpnserver1_out.mat");
-  verifyEqual(testCase, act_out, testExpnserver1_out)
-  rmpath("TestBlocklib/Logistics/Expnserver");
-end
-function test_blocklib_expnserver2(testCase)
-  addpath("TestBlocklib/Logistics/Expnserver");
-  act_out = testExpnserver2();
-  load("testExpnserver2_out.mat");
-  verifyEqual(testCase, act_out, testExpnserver2_out)
-  rmpath("TestBlocklib/Logistics/Expnserver");
-end
-function test_blocklib_queue_en(testCase)
-  addpath("TestBlocklib/Logistics/Queue_en");
-  act_out = testQueue_en();
-  load("testQueue_en_out.mat");
-  verifyEqual(testCase, act_out, testQueue_en_out)
-  rmpath("TestBlocklib/Logistics/Queue_en");
-end
-function test_blocklib_queue_server(testCase)
-  addpath("TestBlocklib/Logistics/Queue_server");
-  act_out = test_cm_queue_server();
-  load("test_cm_queue_server_out.mat");
-  verifyEqual(testCase, act_out, test_cm_queue_server_out)
-  rmpath("TestBlocklib/Logistics/Queue_server");
 end
 %%%%%%%%%%%%%%%%%%%%Math operations%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function test_blocklib_add2(testCase)

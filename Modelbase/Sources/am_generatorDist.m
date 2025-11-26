@@ -26,8 +26,6 @@ classdef am_generatorDist < handle
   %  tD:       delay between entities, if "Constant", [0] & nG > 1                                       ***
   %  debug:    flag to enable debug information
 
-  % 2025/09/27 TP
-
   properties
     s
     id
