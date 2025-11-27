@@ -2,7 +2,7 @@ function runTut04a
 % makes and runs the model and plots the results
 model = "tut04a";
 tEnd = 15;
-seed = 16;
+seed = 7;
 
 model_generator(model); 
 out = model_simulator(model, tEnd, "seed", seed);

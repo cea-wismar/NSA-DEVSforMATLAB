@@ -3,7 +3,7 @@ function out = testFixFifoB(showPlot)
     showPlot = false;
   end
 
-  model = "fixFifoB";
+  model = "c22FixFifoB";
   tEnd = 140;
   
   model_generator(model);

@@ -1,34 +1,43 @@
-function out = testExpnserver(showPlot)
+function out = testNserverDist3(showPlot)
+  % input entities (name, id)
   if nargin == 0
     showPlot = false;
   end
 
   tEnd = 20;
-  rng(42);     % set seed for random generator
+  seed = 42;
 
-	load_system("Expnserver_Model");
-	model_generator("Expnserver_Model");
-	out = model_simulator("Expnserver_Model", tEnd);
+	load_system("NserverDist3_Model");
+	model_generator("NserverDist3_Model");
+	out = model_simulator("NserverDist3_Model", tEnd, "seed", seed);
 
   if showPlot
-    figure("name", "testExpnserver", "NumberTitle", "off")
-    subplot(2,2,1)
+    width = 600;
+    height = 600;
+    fig = figure("name", "testNserverDist3", "NumberTitle", "off");
+    pos = get(fig, "Position");
+    pos(3:4) = [width, height];
+    set(fig, "Position", pos)
+    t = tiledlayout(2,2);
+    t.TileSpacing = "compact";
+    t.Padding = "compact";
+
+    nexttile()
     stem(out.genOut.t,[out.genOut.y.id]); grid on;
     xlim([0 tEnd]);
     xlabel("simulation time");
     ylabel("id");
     title("Generator");
 
-    subplot(2,2,2)
+    nexttile()
     stairs(out.nqOut.t,out.nqOut.y); grid on;
     hold("on");plot(out.nqOut.t,out.nqOut.y, "*");hold("off");
     xlim([0 tEnd]);
-    %ylim([-0.1, 3.1])
     xlabel("simulation time");
     ylabel("nq");
     title("Queue");
 
-    subplot(2,2,3)
+    nexttile()
     stairs(out.nsOut.t,out.nsOut.y); grid on;
     hold("on");plot(out.nsOut.t,out.nsOut.y, "*");hold("off");
     xlim([0 tEnd]);
@@ -37,7 +46,7 @@ function out = testExpnserver(showPlot)
     ylabel("ns");
     title("Server");
   
-    subplot(2,2,4)
+    nexttile()
     stem(out.srvOut.t,[out.srvOut.y.id]); grid on;
     xlim([0 tEnd]);
     xlabel("simulation time");

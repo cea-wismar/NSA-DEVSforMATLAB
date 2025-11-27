@@ -1,24 +1,34 @@
-function out = testExpserver(showPlot)
+function out = testServerDist1(showPlot)
+  % tests with exponential distribution
   if nargin == 0
     showPlot = false;
   end
 
   tEnd = 15;
 
-	load_system("Expserver_Model");
-	model_generator("Expserver_Model");
-	out = model_simulator("Expserver_Model", tEnd, "seed", 3);
+	load_system("ServerDist1_Model");
+	model_generator("ServerDist1_Model");
+	out = model_simulator("ServerDist1_Model", tEnd, "seed", 3);
 
   if showPlot
-    figure("name", "testExpserver", "NumberTitle", "off")
-    subplot(2,2,1)
+    width = 600;
+    height = 600;
+    fig = figure("name", "testServerDist1", "NumberTitle", "off");
+    pos = get(fig, "Position");
+    pos(3:4) = [width, height];
+    set(fig, "Position", pos)
+    t = tiledlayout(2,2);
+    t.TileSpacing = "compact";
+    t.Padding = "compact";
+
+    nexttile()
     stem(out.genOut.t,out.genOut.y); grid on;
     xlim([0 tEnd]);
     xlabel("time");
     ylabel("id");
     title("Generator");
 
-    subplot(2,2,2)
+    nexttile()
     stairs(out.nqOut.t,out.nqOut.y); grid on;
     hold("on");plot(out.nqOut.t,out.nqOut.y, "*");hold("off");
     xlim([0 tEnd]);
@@ -27,14 +37,14 @@ function out = testExpserver(showPlot)
     ylabel("nq");
     title("Queue");
 
-    subplot(2,2,3)
+    nexttile()
     stem(out.srvOut.t,[out.srvOut.y]); grid on;
     xlim([0 tEnd]);
     xlabel("time");
     ylabel("id");
     title("Server");
 
-    subplot(2,2,4)
+    nexttile()
     stairs(out.nsOut.t,out.nsOut.y); grid on;
     hold("on");plot(out.nsOut.t,out.nsOut.y, "*");hold("off");
     xlim([0 tEnd]);
