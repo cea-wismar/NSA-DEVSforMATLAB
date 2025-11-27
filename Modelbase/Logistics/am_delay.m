@@ -29,7 +29,11 @@ classdef am_delay < handle
       s = "running";
       obj.E = [];
       obj.name = name;
-      obj.dt = dt;
+      if isscalar(dt)      % add eps component, if necesssary
+        obj.dt = [dt, 0];
+      else
+        obj.dt = dt;
+      end
       obj.tau = tau;
       obj.debug = debug;
     end
@@ -59,73 +63,54 @@ classdef am_delay < handle
         value.e = obj.dt;
         obj.E = [obj.E, value];
       end
- 
-    if obj.debug
-      fprintf("%-8s leaving  delta\n", obj.name)
-      showState(obj);
-    end
-  end
 
-  function y = lambda(obj,e,x)
-      if ~isempty(obj.E) && obj.E(1).e(1) <= e(1) + get_epsilon()
-      y.out = obj.E(1).x;
-    else
-      y = [];
-    end
-
-    if obj.debug
-      fprintf("%-8s lambda\n", obj.name)
-      showInput(obj, x)
-      showOutput(obj, y)
-    end
-  end
-
-  function t = ta(obj)
-    if isempty(obj.E)
-      t = [Inf, 0];
-    else
-      t = obj.E(1).e;
-    end
-
-    if obj.debug
-      fprintf("%-8s leaving ta    , ", obj.name)
-      fprintf("t=%.2f+%.2f\x03b5\n", t)
-    end
-  end
-
-  %-------------------------------------------------------
-  function showState(obj)
-    % debug function, prints current state
-    fprintf("  E=");
-    if isempty(obj.E)
-      fprintf("[] ");
-    else
-      fprintf("[ ");
-      for I = 1:length(obj.E)-1
-        E = obj.E(I);
-        fprintf("e:%.2f+%.2f\x03b5 x:%.1f, ", E.e(1), E.e(2), E.x);
+      if obj.debug
+        fprintf("%-8s leaving  delta\n", obj.name)
+        showState(obj);
       end
-      E = obj.E(end);
-      fprintf("e:%.2f+%.2f\x03b5 x:%.1f ]", E.e(1), E.e(2), E.x);
     end
-    fprintf("\n")
-  end
 
-  function showInput(obj, x)
-    % debug function, prints current input
-    fprintf("  in: ");
-    if isfield(x, "in")
-      fprintf("[ %s] ", getDescription(x.in));
-    end
-  end
+    function y = lambda(obj,e,x)
+      if ~isempty(obj.E) && obj.E(1).e(1) <= e(1) + get_epsilon()
+        y.out = obj.E(1).x;
+      else
+        y = [];
+      end
 
-  function showOutput(obj, y)
-    % debug function, prints current output
-    fprintf(", out: ")
-    if isfield(y, "out")
-      fprintf("[ %s] ", getDescription(y.out));
+      if obj.debug
+        fprintf("%-8s lambda\n", obj.name)
+        showInput(obj, x)
+        showOutput(obj, y)
+      end
     end
-    fprintf("\n")
+
+    function t = ta(obj)
+      if isempty(obj.E)
+        t = [Inf, 0];
+      else
+        t = obj.E(1).e;
+      end
+
+      if obj.debug
+        fprintf("%-8s leaving ta    , ", obj.name)
+        fprintf("t=%.2f+%.2f\x03b5\n", t)
+      end
+    end
+
+    %-------------------------------------------------------
+    function showState(obj)
+      % debug function, prints current state
+      fprintf("  E=%s\n", getDescription(obj.E));
+    end
+
+    function showInput(obj, x)
+      % debug function, prints current input
+      fprintf("  input:  %s\n", getDescription(x))
+    end
+
+    function showOutput(obj, y)
+      % debug function, prints current output
+      fprintf("  output: %s\n", getDescription(y))
+    end
   end
-end
 end

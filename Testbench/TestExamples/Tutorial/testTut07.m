@@ -5,10 +5,10 @@ function out = testTut07(showPlot)
 
   model = "tut07";
   tEnd = 50;
-  rng(6)
+  seed = 1;
 
   model_generator(model);
-  out = model_simulator(model, tEnd);
+  out = model_simulator(model, tEnd, "seed", seed);
   if showPlot
     plotResults(out, tEnd)
   end
@@ -28,7 +28,7 @@ title("Generator out");
 xlabel("t")
 
 nexttile
-stairs(out.isFull.t,str2double(out.isFull.y));
+stairs(out.isFull.t,out.isFull.y);
 grid("on");
 xlim([0, tEnd])
 title("Queue isFull");

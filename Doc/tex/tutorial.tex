@@ -303,15 +303,15 @@ simple integer numbers (\defi{id's}) to represent them.
 Fig.\ \ref{fig_4} shows the basic queue-server model \cft{tut02}. It starts
 with a simple generator that outputs events with increasing integer values in
 fixed time intervals (\cft{am\_generator}). They reach a queue
-(\cft{am\_queue}), where they wait, until the server (\cft{am\_expserver}) is
+(\cft{am\_queue}), where they wait, until the server (\cft{am\_serverDist}) is
 ready for them. After a random, exponentially distributed service time they
 leave the server and proceed to the terminator (\cft{am\_terminator}), where
 they leave the system. Three output blocks \cft{am\_toworkspace} collect the
-output values of the generator, the queue and the server. The parameter
-\cft{mean service time} of the server is set to $0.9$. As always, the output
-blocks have different and meaningful names for their \cft{varname}. And just to
-get nicer looking plots, the parameter \cft{id of the first entity} of the
-generator is set to $1$.
+output values of the generator, the queue and the server. The only distribution
+parameter is set to $0.9$, it defines the mean service time of the server. As
+always, the output blocks have different and meaningful names for their
+\cft{varname}. And just to get nicer looking plots, the parameter \cft{id of
+  the first entity} of the generator is set to $1$.
 
 \infopar{ The names of blocks in Simulink can be chosen arbitrarily. In ND4M
   they have to be proper variable names, therefore they can't contain spaces or
@@ -345,8 +345,7 @@ The run function sets the \cft{seed} parameter of the simulator, which
 guarantees a reproducible outcome of the simulation. Otherweise, one gets a
 different output with each run. The value of the seed has been chosen carefully
 to create results that can be easily analyzed (cf.\ Fig.\ \ref{fig_5}): Except
-for a short period after $t = 3$, the queue is empty before $t = 6$ and after
-$t = 10$.
+for a short period after $t = 5$, the queue is empty before $t = 10$.
 
 \begin{figure}[ht]
 \centering
@@ -455,7 +454,7 @@ created easily, as is shown in the next example \cft{tut04a}
 The exponential generator consists of four components: An \cft{am\_generator}
 (named \cft{initialEvent}) creates a single output $1$ at time $t = 0$, which
 is sent through an \cft{am\_collect2} block to a server with mean service time
-$t_S = 1.1$. It is delayed by the \cft{am\_expserver} and leaves the
+$t_S = 1.1$. It is delayed by the \cft{am\_serverDist} and leaves the
 generator. A copy is routed through an \cft{am\_bias} block, which increments
 its value, and sent back to the server resulting in a permanent output stream.
 
