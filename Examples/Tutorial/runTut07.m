@@ -16,8 +16,8 @@ height = 300;
 screenSize = get(0, "ScreenSize");
 figureName = "tut07";
 
-tMin = 340;
-tMax = 380;
+tMin = 200;
+tMax = 230;
 
 % open new figure only if necessary
 hFig = findobj("Type", "figure", "Name", figureName);

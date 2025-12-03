@@ -2,7 +2,7 @@ function runTut04c
 % makes and runs the model and plots the results
 model = "tut04c";
 tEnd = 15;
-seed = 16;
+seed = 7;
 clear = true;
 
 model_generator(model); 
