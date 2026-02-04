@@ -64,9 +64,9 @@ classdef am_adddata < handle
       end
 
       if obj.debug
-        fprintf("%-8s lambda\n", obj.name);
-        fprintf("  in: [ %s], out: [ %s]\n", ...
-          getDescription(x.in), getDescription(y.out));
+        fprintf("%-8s lambda\n", obj.name)
+        showInput(obj, x)
+        showOutput(obj, y)
       end
     end
     
@@ -74,5 +74,16 @@ classdef am_adddata < handle
       t = [inf, 0];
     end
    
+    %---------------------------------------------------------------------
+    function showInput(obj, x)
+      % debug function, prints current input
+      fprintf("  input:  %s\n", getDescription(x))
+    end
+
+    function showOutput(obj, y)
+      % debug function, prints current output
+      fprintf("  output: %s\n", getDescription(y))
+    end
+
   end
 end

@@ -66,7 +66,7 @@ classdef am_serverDist < handle
       obj.tSNext = distributionFcn(obj.distName, obj.distPara);
     end
     
-		function delta(obj,e,x)
+    function delta(obj,e,x)
       if obj.debug
         fprintf("%-8s entering delta\n", obj.name)
         showState(obj);

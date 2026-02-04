@@ -118,21 +118,12 @@ classdef am_collectN < handle
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      [idx, val] = splitInput(x);
-      for I=1:length(idx)
-        fprintf("in%d=%.2f ", idx(I), val(I));
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "out")
-        fprintf("out=%s\n", getDescription(y.out));
-      else
-        fprintf("\n")
-      end
+      fprintf("  output: %s\n", getDescription(y))
     end
 
   end

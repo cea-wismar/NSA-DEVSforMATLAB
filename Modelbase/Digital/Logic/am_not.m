@@ -71,24 +71,17 @@ classdef am_not < handle
         
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%4s in1=%s \n", obj.s, obj.in1)
+      fprintf("  phase=%4s in1=%s \n", obj.s, getDescription(obj.in1))
     end
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      if isfield(x, "in")
-        fprintf("%s", x.in);
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "out")
-        fprintf("%s", y.out);
-      end
-      fprintf("\n")
+      fprintf("  output: %s\n", getDescription(y))
     end
   end
 end
