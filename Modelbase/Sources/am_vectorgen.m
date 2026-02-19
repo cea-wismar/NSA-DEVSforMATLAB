@@ -63,6 +63,10 @@ classdef am_vectorgen < handle
       else
         t = [obj.tVec(obj.index) - obj.tVec(obj.index - 1), 0];
       end
+
+      if obj.debug
+        fprintf("%-8s leaving ta, t=%5.3f\n", obj.name, t(1));
+      end     
     end
     
   end

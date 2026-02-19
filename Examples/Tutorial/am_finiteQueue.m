@@ -175,43 +175,18 @@ classdef am_finiteQueue < handle
 
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%s q=", obj.s)
-      if isempty(obj.q)
-        fprintf("[] ");
-      else
-        fprintf("[ ");
-        for I = 1:length(obj.q)-1
-          fprintf("%s, ", getDescription(obj.q(I)));
-        end
-        fprintf("%s]", getDescription(obj.q(end)));
-      end
-      fprintf("\n")
+      fprintf("  phase=%s q=%s\n", obj.s, getDescription(obj.q));
     end
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      if isfield(x, "in")
-        fprintf("[ %s] ", getDescription(x.in));
-      end
-      if isfield(x, "bl")
-        fprintf("bl=%1d", x.bl);
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "out")
-        fprintf("[ %s] ", getDescription(y.out));
-      end
-      if isfield(y, "nq")
-        fprintf("nq=%1d", y.nq);
-      end
-      if isfield(y, "isFull")
-        fprintf(" isFull=%1d", y.isFull);
-      end
-      fprintf("\n")
+      fprintf("  output: %s\n", getDescription(y))
     end
+
   end
 end
