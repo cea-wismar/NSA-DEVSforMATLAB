@@ -26,7 +26,7 @@ classdef am_delay < handle
 
   methods
     function obj = am_delay(name, dt, tau, debug)
-      s = "running";
+      obj.s = "running";
       obj.E = [];
       obj.name = name;
       if isscalar(dt)      % add eps component, if necesssary
@@ -89,11 +89,6 @@ classdef am_delay < handle
         t = [Inf, 0];
       else
         t = obj.E(1).e;
-      end
-
-      if obj.debug
-        fprintf("%-8s leaving ta    , ", obj.name)
-        fprintf("t=%.2f+%.2f\x03b5\n", t)
       end
     end
 

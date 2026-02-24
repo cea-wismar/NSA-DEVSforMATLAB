@@ -1,7 +1,7 @@
 classdef am_generatorDist < handle
   %% Description
-  %  generates entities with distribution-dependent interarrival times and
-  %  increasing id's. The first entity is created at t=0 or after a first waiting
+  % generates entities with distribution-dependent interarrival times and
+  % increasing id's. The first entity is created at t=0 or after a first waiting
   % time. When generating multiple entities at t=0 using "Constant" [0], the
   % internal time delay must be adjusted.
   %% Ports

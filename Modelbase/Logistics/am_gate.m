@@ -10,23 +10,27 @@ classdef am_gate < handle
   %    out    outgoing entities
   %% States
   %  s: running
+  %  isOpen: basic state of gate (true = open, false = closed)
   %% System Parameters
-  %  name:  object name
-  %  debug: flag to enable debug information
-  %  tau:   input delay
+  %  name:     object name
+  %  isOpen0:  initial value of isOpen 
+  %  debug:    flag to enable debug information
+  %  tau:      input delay
 
   properties
     s
-    open
+    isOpen
     name
+    isOpen0
     debug
     tau
   end
 
   methods
-    function obj = am_gate(name, tau, debug)
+    function obj = am_gate(name, isOpen0, tau, debug)
       obj.s = "running";
-      obj.open = false;
+      obj.isOpen0 = isOpen0;
+      obj.isOpen = isOpen0;
       obj.name = name;
       obj.debug = debug;
       obj.tau = tau;
@@ -34,12 +38,12 @@ classdef am_gate < handle
 
     function delta(obj,e,x)
       if ~isempty(x) && isfield(x, "open")
-        obj.open = x.open;
+        obj.isOpen = x.open;
       end
     end
 
     function y = lambda(obj,e,x)
-      open = obj.open;
+      open = obj.isOpen;
       if ~isempty(x) && isfield(x, "open")
         open = x.open;
       end

@@ -30,18 +30,25 @@ classdef am_const < handle
     end
 
     function delta(obj,e,x)
+      if obj.debug
+        fprintf("%-8s entering delta\n", obj.name)
+        showState(obj)
+      end
+
       obj.s = "ready";
+      
+      if obj.debug
+        fprintf("%-8s leaving delta\n", obj.name)
+        showState(obj)
+      end
     end
 
     function y = lambda(obj,e,x)
       y.out = obj.value;
 
       if obj.debug
-        fprintf("%-8s lambda, ", obj.name);
-        if isfield(y, "out")
-          fprintf("out=%2d ", y.out);
-        end
-        fprintf("\n")
+        fprintf("%-8s lambda\n", obj.name)
+        showOutput(obj, y)
       end
     end
 
@@ -51,6 +58,17 @@ classdef am_const < handle
       else
         t = [inf, 0];
       end
+    end
+
+    %---------------------------------------------------------------
+    function showState(obj)
+      % debug function, prints current state
+      fprintf("  phase=%s\n", obj.s);
+    end
+
+    function showOutput(obj, y)
+      % debug function, prints current output
+      fprintf("  output: %s\n", getDescription(y))
     end
 
   end

@@ -96,40 +96,20 @@ classdef am_collect2 < handle
       end
     end
         
+  %----------------------------------------------------------------------
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%s q=", obj.s)
-      if isempty(obj.q)
-        fprintf("[] ");
-      else
-        fprintf("[ ");
-        for I = 1:length(obj.q)-1
-          fprintf("%s, ", getDescription(obj.q(I)));
-        end
-        fprintf("%s", getDescription(obj.q(end)));
-        fprintf("]");
-      end
-      fprintf("\n")
+      fprintf("  phase=%s q=%s\n", obj.s, getDescription(obj.q));
     end
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      if isfield(x, "in1")
-        fprintf("in1=[ %s] ", getDescription(x.in1));
-      end
-      if isfield(x, "in2")
-        fprintf("in2=[ %s]", getDescription(x.in2));
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "out")
-        fprintf("[ %s]", getDescription(y.out));
-      end
-      fprintf("\n")
+      fprintf("  output: %s\n", getDescription(y))
     end
   end
 end

@@ -64,7 +64,9 @@ classdef am_add2 < handle
       y.out = s1 + s2;
 
       if obj.debug
-        fprintf("%-8s lambda, out=%2d\n", obj.name, y.out)
+        fprintf("%-8s lambda\n", obj.name)
+        showInput(obj, x)
+        showOutput(obj, y)
       end
     end
 
@@ -75,6 +77,16 @@ classdef am_add2 < handle
     function showState(obj)
       % debug function, prints current state
       fprintf("  phase=%s u1=%3d u2=%3d\n", obj.s, obj.in1, obj.in2);
+    end
+
+    function showInput(obj, x)
+      % debug function, prints current input
+      fprintf("  input:  %s\n", getDescription(x))
+    end
+
+    function showOutput(obj, y)
+      % debug function, prints current output
+      fprintf("  output: %s\n", getDescription(y))
     end
 
   end

@@ -66,7 +66,7 @@ classdef am_serverDist < handle
       obj.tSNext = distributionFcn(obj.distName, obj.distPara);
     end
     
-		function delta(obj,e,x)
+    function delta(obj,e,x)
       if obj.debug
         fprintf("%-8s entering delta\n", obj.name)
         showState(obj);
@@ -141,31 +141,18 @@ classdef am_serverDist < handle
     %-------------------------------------------------------
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%4s E=[ %s] sig=%4.2f\n",...
+      fprintf("  phase=%s E=[ %s] sig=%4.2f\n",...
         obj.s, getDescription(obj.E), obj.sig(1))
     end
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      if isfield(x, "in")
-        fprintf("[ %s]", getDescription(x.in));
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "out")
-        fprintf("[ %s] ", getDescription(y.out));
-      end
-      if isfield(y, "working")
-        fprintf("working=%1d ", str2double(y.working));
-      end
-      if isfield(y, "n")
-        fprintf("n=%1d", y.n);
-      end
-      fprintf("\n")
-    end 
+      fprintf("  output: %s\n", getDescription(y))
+    end
   end
 end

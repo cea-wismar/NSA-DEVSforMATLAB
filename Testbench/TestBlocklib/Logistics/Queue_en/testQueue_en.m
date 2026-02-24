@@ -1,5 +1,5 @@
-function [out] = testQueue_en(showPlot)
-  if nargin == 0
+function out = testQueue_en(showPlot)
+  if ~exist("showPlot", "var")
     showPlot = false;
   end
 
@@ -8,29 +8,39 @@ function [out] = testQueue_en(showPlot)
   out = model_simulator("Queue_en_Model", tEnd);
 
   if showPlot
-    % plot results
-    figure("name", "testQueue_en", "NumberTitle", "off")
-    subplot(5,1,1)
+    width = 800;
+    height = 900;
+    fig = figure("name", "testQueue_en", "NumberTitle", "off");
+    pos = get(fig, "Position");
+    pos(3:4) = [width, height];
+    set(fig, "Position", pos)
+
+    t = tiledlayout(5,1);
+    t.TileSpacing = "compact";
+    t.Padding = "compact";
+
+    nexttile
     stem(out.genOut.t,out.genOut.y); grid on;
     xlim([0 tEnd]);
     xlabel("simulation time");
     ylabel("out");
     title("Generator");
 
-    subplot(5,1,2)
+    nexttile
     stairs(out.bingenOut.t, out.bingenOut.y);
     xlim([0 tEnd]);
+    ylim([-0.1, 1.1]);
     xlabel("simulation time");
     ylabel("enable");
 
-    subplot(5,1,3)
+    nexttile
     stairs(out.bufferNQ.t,out.bufferNQ.y); grid on;
     xlim([0 tEnd]);
     ylim([0 20]);
     xlabel("simulation time");
     ylabel("NQ");
 
-    subplot(5,1,4)
+    nexttile
     stairs(out.srvnOut.t,out.srvnOut.y); grid on;
     hold("on");plot(out.srvnOut.t,out.srvnOut.y, "*");hold("off");
     xlim([0 tEnd]);
@@ -39,7 +49,7 @@ function [out] = testQueue_en(showPlot)
     ylabel("n");
     title("Server");
 
-    subplot(5,1,5)
+    nexttile
     stem(out.srvOut.t,out.srvOut.y); grid on;
     xlim([0 tEnd]);
     xlabel("simulation time");
