@@ -79,12 +79,9 @@ classdef am_collect3 < handle
       end
       
       if obj.debug
-        fprintf("%-8s lambda, ", obj.name)
-        if isfield(y, "out")
-          fprintf("out=%s\n", getDescription(y.out));
-        else
-          fprintf("\n")
-        end
+        fprintf("%-8s lambda\n", obj.name)
+        showInput(obj, x)
+        showOutput(obj, y)
       end      
     end
  
@@ -99,20 +96,22 @@ classdef am_collect3 < handle
       end
     end
         
+  %----------------------------------------------------------------------
+
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%s q=", obj.s)
-      if isempty(obj.q)
-        fprintf("[] ");
-      else
-        fprintf("[ ");
-        for I = 1:length(obj.q)-1
-          fprintf("%s, ", getDescription(obj.q(I)));
-        end
-        fprintf("%s]", getDescription(obj.q(end)));
-      end
-      fprintf("\n")
+      fprintf("  phase=%s q=%s\n", obj.s, getDescription(obj.q));
     end
 
+    function showInput(obj, x)
+      % debug function, prints current input
+      fprintf("  input:  %s\n", getDescription(x))
+    end
+
+    function showOutput(obj, y)
+      % debug function, prints current output
+      fprintf("  output: %s\n", getDescription(y))
+    end
+ 
   end
 end

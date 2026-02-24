@@ -317,6 +317,27 @@ function test_blocklib_saturation(testCase)
   verifyEqual(testCase, act_out, testSaturation_out)
   rmpath("TestBlocklib/MathOperations/Saturation");
 end
+function test_blocklib_not(testCase)
+  addpath("TestBlocklib/MathOperations/Not");
+  act_out = testNot();
+  load("testNot_out.mat");
+  verifyEqual(testCase, act_out, testNot_out)
+  rmpath("TestBlocklib/MathOperations/Not");
+end
+function test_blocklib_or2(testCase)
+  addpath("TestBlocklib/MathOperations/Or2");
+  act_out = testOr2();
+  load("testOr2_out.mat");
+  verifyEqual(testCase, act_out, testOr2_out)
+  rmpath("TestBlocklib/MathOperations/Or2");
+end
+function test_blocklib_nor3(testCase)
+  addpath("TestBlocklib/MathOperations/Nor3");
+  act_out = testNor3();
+  load("testNor3_out.mat");
+  verifyEqual(testCase, act_out, testNor3_out)
+  rmpath("TestBlocklib/MathOperations/Nor3");
+end
 
 %%%%%%%%%%%%%%%%%%%%QSS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function test_blocklib_hIntegrator(testCase)
@@ -521,6 +542,34 @@ function test_blocklib_enabledgenerator(testCase)
   verifyEqual(testCase, act_out, testEnabledGenerator_out)
   rmpath("TestBlocklib/Sources/EnabledGenerator");
 end
+function test_blocklib_enabledgenerator1(testCase)
+  addpath("TestBlocklib/Sources/EnabledGenerator");
+  act_out = testEnabledGenerator1();
+  load("testEnabledGenerator1_out.mat");
+  verifyEqual(testCase, act_out, testEnabledGenerator1_out)
+  rmpath("TestBlocklib/Sources/EnabledGenerator");
+end
+function test_blocklib_enabledgenerator2(testCase)
+  addpath("TestBlocklib/Sources/EnabledGenerator");
+  act_out = testEnabledGenerator2();
+  load("testEnabledGenerator2_out.mat");
+  verifyEqual(testCase, act_out, testEnabledGenerator2_out)
+  rmpath("TestBlocklib/Sources/EnabledGenerator");
+end
+function test_blocklib_enabledgenerator3(testCase)
+  addpath("TestBlocklib/Sources/EnabledGenerator");
+  act_out = testEnabledGenerator3();
+  load("testEnabledGenerator3_out.mat");
+  verifyEqual(testCase, act_out, testEnabledGenerator3_out)
+  rmpath("TestBlocklib/Sources/EnabledGenerator");
+end
+function test_blocklib_enabledgenerator4(testCase)
+  addpath("TestBlocklib/Sources/EnabledGenerator");
+  act_out = testEnabledGenerator4();
+  load("testEnabledGenerator4_out.mat");
+  verifyEqual(testCase, act_out, testEnabledGenerator4_out)
+  rmpath("TestBlocklib/Sources/EnabledGenerator");
+end
 
 %%%%%%%%%%%%%%%%%%%%Statistics%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function test_blocklib_utilization(testCase)
@@ -538,175 +587,175 @@ function test_blocklib_getmax(testCase)
   rmpath("TestBlocklib/Statistics/Getmax");
 end
 
-%%%%%%%%%%%%%%%%%%%%Digital%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%DigitalI3e%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%Converter
 function am_bin8_to_decblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Converter/Bin8_to_dec");
+  addpath("TestBlocklib/DigitalI3e/Converter/Bin8_to_dec");
   act_out = test_am_bin8_to_dec();
   load("test_am_bin8_to_dec_out.mat");
   verifyEqual(testCase, act_out, test_am_bin8_to_dec_out)
-  rmpath("TestBlocklib/Digital/Converter/Bin8_to_dec");
+  rmpath("TestBlocklib/DigitalI3e/Converter/Bin8_to_dec");
 end
 function am_dec_to_bin8blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Converter/Dec_to_bin8");
+  addpath("TestBlocklib/DigitalI3e/Converter/Dec_to_bin8");
   act_out = test_am_dec_to_bin8();
   load("test_am_dec_to_bin8_out.mat");
   verifyEqual(testCase, act_out, test_am_dec_to_bin8_out)
-  rmpath("TestBlocklib/Digital/Converter/Dec_to_bin8");
+  rmpath("TestBlocklib/DigitalI3e/Converter/Dec_to_bin8");
 end
 function am_bin_to_doubleblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Converter/Bin_to_double");
+  addpath("TestBlocklib/DigitalI3e/Converter/Bin_to_double");
   act_out = test_am_bin_to_double();
   load("test_am_bin_to_double_out.mat");
   verifyEqual(testCase, act_out, test_am_bin_to_double_out)
-  rmpath("TestBlocklib/Digital/Converter/Bin_to_double");
+  rmpath("TestBlocklib/DigitalI3e/Converter/Bin_to_double");
 end
 
 %%Logic
-function am_nand2blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Nand2");
-  act_out = test_am_nand2();
-  load("test_am_nand2_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand2_out)
-  rmpath("TestBlocklib/Digital/Logic/Nand2");
+function am_nand2I3eblocklib_test(testCase)
+  addpath("TestBlocklib/DigitalI3e/Logic/Nand2I3e");
+  act_out = test_am_nand2I3e();
+  load("test_am_nand2I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand2I3e_out)
+  rmpath("TestBlocklib/DigitalI3e/Logic/Nand2I3e");
 end
-function am_nand3blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Nand3");
-  act_out = test_am_nand3();
-  load("test_am_nand3_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand3_out)
-  rmpath("TestBlocklib/Digital/Logic/Nand3");
+function am_nand3I3eblocklib_test(testCase)
+  addpath("TestBlocklib/DigitalI3e/Logic/Nand3I3e");
+  act_out = test_am_nand3I3e();
+  load("test_am_nand3I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand3I3e_out)
+  rmpath("TestBlocklib/DigitalI3e/Logic/Nand3I3e");
 end
-function am_nand4blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Nand4");
-  act_out = test_am_nand4();
-  load("test_am_nand4_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand4_out)
-  rmpath("TestBlocklib/Digital/Logic/Nand4");
+function am_nand4I3eblocklib_test(testCase)
+  addpath("TestBlocklib/DigitalI3e/Logic/Nand4I3e");
+  act_out = test_am_nand4I3e();
+  load("test_am_nand4I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand4I3e_out)
+  rmpath("TestBlocklib/DigitalI3e/Logic/Nand4I3e");
 end
-function am_notgateblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Not");
-  act_out = test_am_not();
-  load("test_am_not_out.mat");
-  verifyEqual(testCase, act_out, test_am_not_out)
-  rmpath("TestBlocklib/Digital/Logic/Not");
+function test_blocklib_notI3e(testCase)
+  addpath("TestBlocklib/DigitalI3e/Logic/NotI3e");
+  act_out = testNotI3e();
+  load("testNotI3e_out.mat");
+  verifyEqual(testCase, act_out, testNotI3e_out)
+  rmpath("TestBlocklib/DigitalI3e/Logic/NotI3e");
 end
-function am_or2blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Or2");
-  act_out = test_am_or2();
-  load("test_am_or2_out.mat");
-  verifyEqual(testCase, act_out, test_am_or2_out)
-  rmpath("TestBlocklib/Digital/Logic/Or2");
+function am_or2I3eblocklib_test(testCase)
+  addpath("TestBlocklib/DigitalI3e/Logic/Or2I3e");
+  act_out = test_am_or2I3e();
+  load("test_am_or2I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_or2I3e_out)
+  rmpath("TestBlocklib/DigitalI3e/Logic/Or2I3e");
 end
 function cm_and2blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/And2");
+  addpath("TestBlocklib/DigitalI3e/Logic/And2");
   act_out = test_cm_and2();
   load("test_cm_and2_out.mat");
   verifyEqual(testCase, act_out, test_cm_and2_out)
-  rmpath("TestBlocklib/Digital/Logic/And2");
+  rmpath("TestBlocklib/DigitalI3e/Logic/And2");
 end
 function cm_notblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/NotC");
+  addpath("TestBlocklib/DigitalI3e/Logic/NotC");
   act_out = test_cm_not();
   load("test_cm_not_out.mat");
   verifyEqual(testCase, act_out, test_cm_not_out)
-  rmpath("TestBlocklib/Digital/Logic/NotC");
+  rmpath("TestBlocklib/DigitalI3e/Logic/NotC");
 end
 function cm_or2blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Or2C");
+  addpath("TestBlocklib/DigitalI3e/Logic/Or2C");
   act_out = test_cm_or2();
   load("test_cm_or2_out.mat");
   verifyEqual(testCase, act_out, test_cm_or2_out)
-  rmpath("TestBlocklib/Digital/Logic/Or2C");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Or2C");
 end
 function cm_xor2blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Xor2");
+  addpath("TestBlocklib/DigitalI3e/Logic/Xor2");
   act_out = test_cm_xor2();
   load("test_cm_xor2_out.mat");
   verifyEqual(testCase, act_out, test_cm_xor2_out)
-  rmpath("TestBlocklib/Digital/Logic/Xor2");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Xor2");
 end
 function cm_mux2to1blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Mux2to1");
+  addpath("TestBlocklib/DigitalI3e/Logic/Mux2to1");
   act_out = test_cm_Mux2to1();
   load("test_cm_Mux2to1_out.mat");
   verifyEqual(testCase, act_out, test_cm_Mux2to1_out)
-  rmpath("TestBlocklib/Digital/Logic/Mux2to1");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Mux2to1");
 end
 function cm_mux4to1blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Mux4to1");
+  addpath("TestBlocklib/DigitalI3e/Logic/Mux4to1");
   act_out = test_cm_Mux4to1();
   load("test_cm_Mux4to1_out.mat");
   verifyEqual(testCase, act_out, test_cm_Mux4to1_out)
-  rmpath("TestBlocklib/Digital/Logic/Mux4to1");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Mux4to1");
 end
 function cm_halfadderblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Halfadder");
+  addpath("TestBlocklib/DigitalI3e/Logic/Halfadder");
   act_out = test_cm_halfadder();
   load("test_cm_halfadder_out.mat");
   verifyEqual(testCase, act_out, test_cm_halfadder_out)
-  rmpath("TestBlocklib/Digital/Logic/Halfadder");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Halfadder");
 end
 function cm_fulladderblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Fulladder");
+  addpath("TestBlocklib/DigitalI3e/Logic/Fulladder");
   act_out = test_cm_fulladder();
   load("test_cm_fulladder_out.mat");
   verifyEqual(testCase, act_out, test_cm_fulladder_out)
-  rmpath("TestBlocklib/Digital/Logic/Fulladder");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Fulladder");
 end
 function cm_nand4blocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Nand4C");
+  addpath("TestBlocklib/DigitalI3e/Logic/Nand4C");
   act_out = test_cm_nand4();
   load("test_cm_nand4_out.mat");
   verifyEqual(testCase, act_out, test_cm_nand4_out)
-  rmpath("TestBlocklib/Digital/Logic/Nand4C");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Nand4C");
 end
 function cm_rising_edgeblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Rising_edge");
+  addpath("TestBlocklib/DigitalI3e/Logic/Rising_edge");
   act_out = test_cm_rising_edge();
   load("test_cm_rising_edge_out.mat");
   verifyEqual(testCase, act_out, test_cm_rising_edge_out)
-  rmpath("TestBlocklib/Digital/Logic/Rising_edge");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Rising_edge");
 end
 function cm_falling_edgeblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Falling_edge");
+  addpath("TestBlocklib/DigitalI3e/Logic/Falling_edge");
   act_out = test_cm_falling_edge();
   load("test_cm_falling_edge_out.mat");
   verifyEqual(testCase, act_out, test_cm_falling_edge_out)
-  rmpath("TestBlocklib/Digital/Logic/Falling_edge");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Falling_edge");
 end
 function cm_carry_ripple_adder_8bitblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Carry_ripple_adder_8bit");
+  addpath("TestBlocklib/DigitalI3e/Logic/Carry_ripple_adder_8bit");
   act_out = test_cm_carry_ripple_adder_8bit();
   load("test_cm_carry_ripple_adder_8bit_out.mat");
   verifyEqual(testCase, act_out, test_cm_carry_ripple_adder_8bit_out)
-  rmpath("TestBlocklib/Digital/Logic/Carry_ripple_adder_8bit");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Carry_ripple_adder_8bit");
 end
 %Model by Model verification
 function MMVblocklib_not_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/NotC");
-  addpath("TestBlocklib/Digital/Logic/Not");
+  addpath("TestBlocklib/DigitalI3e/Logic/NotC");
+  addpath("TestBlocklib/DigitalI3e/Logic/NotI3e");
   out_cm = test_cm_not();
-  out_am = test_am_not();
+  out_am = testNotI3e();
   verifyEqual(testCase, out_cm, out_am)
-  rmpath("TestBlocklib/Digital/Logic/NotC");
-  rmpath("TestBlocklib/Digital/Logic/Not");
+  rmpath("TestBlocklib/DigitalI3e/Logic/NotC");
+  rmpath("TestBlocklib/DigitalI3e/Logic/NotI3e");
 end
 function MMVblocklib_or2_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Or2C");
-  addpath("TestBlocklib/Digital/Logic/Or2");
+  addpath("TestBlocklib/DigitalI3e/Logic/Or2C");
+  addpath("TestBlocklib/DigitalI3e/Logic/Or2I3e");
   out_cm = test_cm_or2();
-  out_am = test_am_or2();
+  out_am = test_am_or2I3e();
   verifyEqual(testCase, out_cm, out_am)
-  rmpath("TestBlocklib/Digital/Logic/Or2C");
-  rmpath("TestBlocklib/Digital/Logic/Or2");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Or2C");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Or2I3e");
 end
 
 %%Flip Flops
 function am_jk_flip_flopblocklib_test(testCase)
-  addpath("TestBlocklib/Digital/FlipFlops/JKFF");
+  addpath("TestBlocklib/DigitalI3e/FlipFlops/JKFF");
   act_out = test_am_jk_flip_flop();
   load("test_am_jk_flip_flop_out.mat");
   verifyEqual(testCase, act_out, test_am_jk_flip_flop_out)
-  rmpath("TestBlocklib/Digital/FlipFlops/JKFF");
+  rmpath("TestBlocklib/DigitalI3e/FlipFlops/JKFF");
 end

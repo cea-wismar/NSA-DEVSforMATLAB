@@ -14,7 +14,7 @@ function [out] = testEnabledGenerator(showPlot)
 
   tG = 0.9;
   n0 = 2;
-  nG = 11;
+  nG = 12;
   tEnable = [3.0, 6.0, 12, 14, 100];
   tEnd = 19;
   debug = false;               % model debug level
@@ -46,15 +46,26 @@ function [out] = testEnabledGenerator(showPlot)
   out = simout;
 
   if showPlot
-    figure("name", "testEnabledGenerator", "NumberTitle", "off")
-    subplot(2,1,1)
-    plot_ieee1164(simout.bingenOut.t, simout.bingenOut.y);
+    width = 600;
+    height = 400;
+    fig = figure("name", "testEnabledGenerator", "NumberTitle", "off");
+    pos = get(fig, "Position");
+    pos(3:4) = [width, height];
+    set(fig, "Position", pos)
+
+    t = tiledlayout(2,1);
+    t.TileSpacing = "compact";
+    t.Padding = "compact";
+
+    nexttile
+    stairs(out.bingenOut.t,out.bingenOut.y, "*-");
     xlim([0 tEnd]);
+    ylim([-0.1,1.1])
     xlabel("t");
     ylabel("enable");
 
-    subplot(2,1,2)
-    stem(simout.genOut.t,simout.genOut.y); grid on;
+    nexttile
+    stem(out.genOut.t,out.genOut.y); grid on;
     xlim([0 tEnd]);
     ylim([0 15]);
     xlabel("t");

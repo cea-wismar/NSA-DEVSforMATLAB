@@ -263,94 +263,94 @@ function test_hIntegrator(testCase)
   rmpath("TestAtomics/Qss/Hintegrator");
 end
 
-%%%%%%%%%%%%%%%%%%%%Digital%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%DigitalI3e%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%Converter
 function am_bin8_to_dec_test(testCase)
-  addpath("TestAtomics/Digital/Converter/Bin8_to_dec");
+  addpath("TestAtomics/DigitalI3e/Converter/Bin8_to_dec");
   act_out = test_am_bin8_to_dec();
   load("test_am_bin8_to_dec_out.mat");
   verifyEqual(testCase, act_out, test_am_bin8_to_dec_out)
-  rmpath("TestAtomics/Digital/Converter/Bin8_to_dec");
+  rmpath("TestAtomics/DigitalI3e/Converter/Bin8_to_dec");
 end
 function am_dec_to_bin8_test(testCase)
-  addpath("TestAtomics/Digital/Converter/Dec_to_bin8");
+  addpath("TestAtomics/DigitalI3e/Converter/Dec_to_bin8");
   act_out = test_am_dec_to_bin8();
   load("test_am_dec_to_bin8_out.mat");
   verifyEqual(testCase, act_out, test_am_dec_to_bin8_out)
-  rmpath("TestAtomics/Digital/Converter/Dec_to_bin8");
+  rmpath("TestAtomics/DigitalI3e/Converter/Dec_to_bin8");
 end
 function am_bin_to_double_test(testCase)
-  addpath("TestAtomics/Digital/Converter/Bin_to_double");
+  addpath("TestAtomics/DigitalI3e/Converter/Bin_to_double");
   act_out = test_am_bin_to_double();
   load("test_am_bin_to_double_out.mat");
   verifyEqual(testCase, act_out, test_am_bin_to_double_out)
-  rmpath("TestAtomics/Digital/Converter/Bin_to_double");
+  rmpath("TestAtomics/DigitalI3e/Converter/Bin_to_double");
 end
 
 %%Logic
-function am_nand2_test(testCase)
-  addpath("TestAtomics/Digital/Logic/Nand2");
-  act_out = test_am_nand2();
-  load("test_am_nand2_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand2_out)
-  rmpath("TestAtomics/Digital/Logic/Nand2");
+function am_nand2I3e_test(testCase)
+  addpath("TestAtomics/DigitalI3e/Logic/Nand2I3e");
+  act_out = test_am_nand2I3e();
+  load("test_am_nand2I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand2I3e_out)
+  rmpath("TestAtomics/DigitalI3e/Logic/Nand2I3e");
 end
-function am_nand3_test(testCase)
-  addpath("TestAtomics/Digital/Logic/Nand3");
-  act_out = test_am_nand3();
-  load("test_am_nand3_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand3_out)
-  rmpath("TestAtomics/Digital/Logic/Nand3");
+function am_nand3I3e_test(testCase)
+  addpath("TestAtomics/DigitalI3e/Logic/Nand3I3e");
+  act_out = test_am_nand3I3e();
+  load("test_am_nand3I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand3I3e_out)
+  rmpath("TestAtomics/DigitalI3e/Logic/Nand3I3e");
 end
-function am_nand4_test(testCase)
-  addpath("TestAtomics/Digital/Logic/Nand4");
-  act_out = test_am_nand4();
-  load("test_am_nand4_out.mat");
-  verifyEqual(testCase, act_out, test_am_nand4_out)
-  rmpath("TestAtomics/Digital/Logic/Nand4");
+function am_nand4I3e_test(testCase)
+  addpath("TestAtomics/DigitalI3e/Logic/Nand4I3e");
+  act_out = test_am_nand4I3e();
+  load("test_am_nand4I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_nand4I3e_out)
+  rmpath("TestAtomics/DigitalI3e/Logic/Nand4I3e");
 end
-function am_notgate_test(testCase)
-  addpath("TestAtomics/Digital/Logic/Not");
-  act_out = test_am_not();
-  load("test_am_not_out.mat");
-  verifyEqual(testCase, act_out, test_am_not_out)
-  rmpath("TestAtomics/Digital/Logic/Not");
+function test_notI3e(testCase)
+  addpath("TestAtomics/DigitalI3e/Logic/NotI3e");
+  act_out = testNotI3e();
+  load("testNotI3e_out.mat");
+  verifyEqual(testCase, act_out, testNotI3e_out)
+  rmpath("TestAtomics/DigitalI3e/Logic/NotI3e");
 end
-function am_or2_test(testCase)
-  addpath("TestAtomics/Digital/Logic/Or2");
-  act_out = test_am_or2();
-  load("test_am_or2_out.mat");
-  verifyEqual(testCase, act_out, test_am_or2_out)
-  rmpath("TestAtomics/Digital/Logic/Or2");
+function am_or2I3e_test(testCase)
+  addpath("TestAtomics/DigitalI3e/Logic/Or2I3e");
+  act_out = test_am_or2I3e();
+  load("test_am_or2I3e_out.mat");
+  verifyEqual(testCase, act_out, test_am_or2I3e_out)
+  rmpath("TestAtomics/DigitalI3e/Logic/Or2I3e");
 end
 
 %Model by Model verification
 function MMV_not_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/NotC");
-  addpath("TestAtomics/Digital/Logic/Not");
+  addpath("TestBlocklib/DigitalI3e/Logic/NotC");
+  addpath("TestAtomics/DigitalI3e/Logic/NotI3e");
   out_cm = test_cm_not();
-  out_am = test_am_not();
+  out_am = testNotI3e();
   verifyEqual(testCase, out_cm, out_am)
-  rmpath("TestBlocklib/Digital/Logic/NotC");
-  rmpath("TestAtomics/Digital/Logic/Not");
+  rmpath("TestBlocklib/DigitalI3e/Logic/NotC");
+  rmpath("TestAtomics/DigitalI3e/Logic/NotI3e");
 end
 function MMV_or2_test(testCase)
-  addpath("TestBlocklib/Digital/Logic/Or2C");
-  addpath("TestAtomics/Digital/Logic/Or2");
+  addpath("TestBlocklib/DigitalI3e/Logic/Or2C");
+  addpath("TestAtomics/DigitalI3e/Logic/Or2I3e");
   out_cm = test_cm_or2();
-  out_am = test_am_or2();
+  out_am = test_am_or2I3e();
   verifyEqual(testCase, out_cm, out_am)
-  rmpath("TestBlocklib/Digital/Logic/Or2C");
-  rmpath("TestAtomics/Digital/Logic/Or2");
+  rmpath("TestBlocklib/DigitalI3e/Logic/Or2C");
+  rmpath("TestAtomics/DigitalI3e/Logic/Or2I3e");
 end
 
 %%Flip Flops
 function am_jk_flip_flop_test(testCase)
-  addpath("TestAtomics/Digital/FlipFlops/JKFF");
+  addpath("TestAtomics/DigitalI3e/FlipFlops/JKFF");
   act_out = test_am_jk_flip_flop();
   load("test_am_jk_flip_flop_out.mat");
   verifyEqual(testCase, act_out, test_am_jk_flip_flop_out)
-  rmpath("TestAtomics/Digital/FlipFlops/JKFF");
+  rmpath("TestAtomics/DigitalI3e/FlipFlops/JKFF");
 end
 
 %Model by Model verification
