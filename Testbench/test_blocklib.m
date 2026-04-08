@@ -148,6 +148,62 @@ function test_blocklib_server_case1(testCase)
   verifyEqual(testCase, act_out, testServer_out)
   rmpath("TestBlocklib/Logistics/Server");
 end
+function test_releaseQueue(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue();
+  load("testReleaseQueue_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue1a(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue1(1);
+  load("testReleaseQueue1a_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue1a_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue1b(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue1(2);
+  load("testReleaseQueue1b_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue1b_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue1c(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue1(3);
+  load("testReleaseQueue1c_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue1c_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue2a(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue2(1);
+  load("testReleaseQueue2a_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue2a_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue2b(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue2(2);
+  load("testReleaseQueue2b_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue2b_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue2c(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue2(3);
+  load("testReleaseQueue2c_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue2c_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
+function test_releaseQueue3(testCase)
+  addpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+  act_out = testReleaseQueue3();
+  load("testReleaseQueue3_out.mat");
+  verifyEqual(testCase, act_out, testReleaseQueue3_out)
+  rmpath("TestBlocklib/Logistics/ReleaseQueue", "..");
+end
 function test_blocklib_server_case2(testCase)
   addpath("TestBlocklib/Logistics/Server");
   act_out = testServer(2);
@@ -349,6 +405,13 @@ function test_blocklib_hIntegrator(testCase)
 end
 
 %%%%%%%%%%%%%%%%%%%%Routing%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function test_blocklib_epsdelay(testCase)
+  addpath("TestBlocklib/Routing/EpsDelay");
+  act_out = testEpsDelay();
+  load("testEpsDelay_out.mat");
+  verifyEqual(testCase, act_out, testEpsDelay_out)
+  rmpath("TestBlocklib/Routing/EpsDelay");
+end
 function test_blocklib_collect2(testCase)
   addpath("TestBlocklib/Routing/Collect2");
   act_out = testCollect2();
@@ -477,6 +540,13 @@ function test_blocklib_toworkspace(testCase)
   verifyEqual(testCase, act_out, testToworkspace_out)
   rmpath("TestBlocklib/Sinks/Toworkspace");
 end
+function test_cmStopAtN(testCase)
+  addpath("TestBlocklib/Sinks/CmStopAtN");
+  act_out = testCmStopAtN();
+  load("testCmStopAtN_out.mat");
+  verifyEqual(testCase, act_out, testCmStopAtN_out)
+  rmpath("TestBlocklib/Sinks/CmStopAtN");
+end
 
 %%%%%%%%%%%%%%%%%%%%Sources%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function test_blocklib_fromworkspace(testCase)
@@ -570,6 +640,13 @@ function test_blocklib_enabledgenerator4(testCase)
   verifyEqual(testCase, act_out, testEnabledGenerator4_out)
   rmpath("TestBlocklib/Sources/EnabledGenerator");
 end
+function test_blocklib_triggeredGenerator(testCase)
+  addpath("TestBlocklib/Sources/TriggeredGenerator");
+  act_out = testTriggeredGenerator();
+  load("testTriggeredGenerator_out.mat");
+  verifyEqual(testCase, act_out, testTriggeredGenerator_out)
+  rmpath("TestBlocklib/Sources/TriggeredGenerator");
+end
 
 %%%%%%%%%%%%%%%%%%%%Statistics%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function test_blocklib_utilization(testCase)
@@ -585,6 +662,13 @@ function test_blocklib_getmax(testCase)
   load("testGetmax_out.mat");
   verifyEqual(testCase, act_out, testGetmax_out)
   rmpath("TestBlocklib/Statistics/Getmax");
+end
+function test_blocklib_getTime(testCase)
+  addpath("TestBlocklib/Statistics/GetTime", "..");
+  act_out = testGetTime();
+  load("testGetTime_out.mat");
+  verifyEqual(testCase, act_out, testGetTime_out)
+  rmpath("TestBlocklib/Statistics/GetTime");
 end
 
 %%%%%%%%%%%%%%%%%%%%DigitalI3e%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
