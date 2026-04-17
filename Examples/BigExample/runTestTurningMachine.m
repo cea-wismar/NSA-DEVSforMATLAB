@@ -1,7 +1,5 @@
 function runTestTurningMachine()
   % makes and runs model and plots results
-  %   set global DEBUGLEVEL
-  %   model_simulator(model, tEnd, false)
 
   model = "testTurningMachine";
   addpath("atomics");

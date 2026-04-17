@@ -1,5 +1,5 @@
 function out = testTut04(showPlot)
-  if ~exist('showPlot','var')
+  if ~exist("showPlot", "var")
     showPlot = false;
   end
 
@@ -7,11 +7,17 @@ function out = testTut04(showPlot)
   tEnd = 15;
   rng(16);
 
+  oldpwd = cd("../../../Examples/Tutorial");
+  load_system("tutLib");
+
   model_generator(model);
   out = model_simulator(model, tEnd);
   if showPlot
     plotResults(out, tEnd)
   end
+
+  close_system("tutLib"); 
+  cd(oldpwd)
 end
 
 %---------------------------------------------------------------------------
