@@ -11,8 +11,8 @@ end
 
 %----------------------------------------------------------------------
 function plotResults(out, tEnd)
-width = 700;
-height = 300;
+width = 850;
+height = 350;
 screenSize = get(0, "ScreenSize");
 figureName = "tut07";
 

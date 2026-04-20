@@ -3,9 +3,6 @@ function runTestFurnace(type, set)
   % parameters:
   %   type    "HF" or "TF"
   %   set     1, 2, 3
-  % optional:
-  %   set global DEBUGLEVEL
-  %   model_simulator(model, tEnd, false)
   if nargin == 0
     type = "HF";
     set = 1;
