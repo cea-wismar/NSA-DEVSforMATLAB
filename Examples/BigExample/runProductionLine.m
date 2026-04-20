@@ -1,24 +1,31 @@
-function runProductionLine(nr)
+function out = runProductionLine(nr, showPlot)
   % makes and runs model and plots results
-  %   set global DEBUGLEVEL
-  %   model_simulator(model, tEnd, false)
-  if nargin == 0
+  % nr = 1/2/3, three different tEnd values
+  if ~exist("nr", "var")
     nr = 1;
   end
+  if ~exist("showPlot", "var")
+    showPlot = false;
+  end
  
-  model = "productionLine";
-
   switch nr
     case 1
       tEnd = 2*86400;
     case 2
       tEnd = 6*86400;
-  end
-  addpath("atomics");
+     case 3
+      tEnd = 60000;  % short version for test
+ end
+
+  model = "productionLineP";
+
+  oldpath = addpath(genpath("atomics"));
   model_generator(model);
   out = model_simulator(model, tEnd);
-  plotResults(out, tEnd, model)
-  rmpath("atomics");
+  if showPlot
+    plotResults(out, tEnd, model)
+  end
+  path(oldpath);
 end
 
 %---------------------------------------------------------------------------
