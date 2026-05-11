@@ -3,19 +3,19 @@ function out = testNot(showPlot)
     showPlot = false;
   end
 
-  tEnd = 10;
+  tEnd = 7;
   model_generator("Not_Model");
   out = model_simulator("Not_Model", tEnd);
 
   if showPlot
     width = 600;
-    height = 400;
+    height = 500;
     fig = figure("name", "testNot", "NumberTitle", "off");
     pos = get(fig, "Position");
     pos(3:4) = [width, height];
     set(fig, "Position", pos)
 
-    t = tiledlayout(2,1);
+    t = tiledlayout(3,1);
     t.TileSpacing = "compact";
     t.Padding = "compact";
 
@@ -36,5 +36,11 @@ function out = testNot(showPlot)
     title("Not");
     xlim([0, tEnd])
     ylim([-0.1, 1.1])
+
+    nexttile
+    stem(out.nOut.t, out.nOut.y);
+    grid("on")
+    title("Terminator");
+    xlim([0, tEnd])
   end
 end

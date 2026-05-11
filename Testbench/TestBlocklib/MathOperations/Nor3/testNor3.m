@@ -17,7 +17,7 @@ function out = testNor3(showPlot)
     pos(3:4) = [width, height];
     set(fig, "Position", pos)
 
-    t = tiledlayout(4,1);
+    t = tiledlayout(5,1);
     t.TileSpacing = "compact";
     t.Padding = "compact";
 
@@ -44,5 +44,10 @@ function out = testNor3(showPlot)
     xlim([0, tEnd])
     ylim([-0.1,1.1])
     title("Nor3");
+
+    nexttile
+    stem(out.nOut.t, out.nOut.y);
+    title("Terminator");
+    xlim([0, tEnd])
   end
 end

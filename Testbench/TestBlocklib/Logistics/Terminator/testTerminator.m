@@ -1,29 +1,47 @@
-function [out] = testTerminator(showPlot)
-  if nargin == 0
+function out = testTerminator(showPlot)
+  if ~exist("showPlot", "var")
     showPlot = false;
   end
 
-  tEnd = 12;
+  model = "Terminator_Model";
+  tEnd = 10;
 
-  model_generator("Terminator_Model");
-  out = model_simulator("Terminator_Model", tEnd);
+  model_generator(model);
+  out = model_simulator(model, tEnd);
 
   if showPlot
-    figure("name", "testTerminator", "NumberTitle", "off")
-    tiledlayout("vertical")
+    width = 600;
+    height = 600;
+    fig = figure("name", "testTerminator", "NumberTitle", "off");
+    pos = get(fig, "Position");
+    pos(3:4) = [width, height];
+    set(fig, "Position", pos)
 
-    nexttile()
-    stem(out.genOut.t,out.genOut.y); grid on;
-    xlim([0 tEnd]);
-    ylim([0 15]);
-    xlabel("t");
-    ylabel("gen out");
+    t = tiledlayout(4,1);
+    t.TileSpacing = "compact";
+    t.Padding = "compact";
 
-    nexttile()
-    stem(out.termOut.t,out.termOut.y); grid on;
-    xlim([0 tEnd]);
-    ylim([0 15]);
-    xlabel("t");
-    ylabel("term out");
+    nexttile
+    stairs(out.gen1Out.t,out.gen1Out.y, "*-");
+    title("Generator 1");
+    xlim([0, tEnd])
+    ylim([-0.1,1.1])
+
+    nexttile
+    stairs(out.gen2Out.t,out.gen2Out.y, "*-");
+    title("Generator 2");
+    xlim([0, tEnd])
+    ylim([-0.1,1.1])
+
+    nexttile
+    stairs(out.orOut.t,out.orOut.y, "*-");
+    xlim([0, tEnd])
+    ylim([-0.1,1.1])
+    title("Or2");
+
+    nexttile
+    stem(out.nOut.t, out.nOut.y);
+    title("Terminator");
+    xlim([0, tEnd])
   end
 end

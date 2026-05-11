@@ -4,11 +4,11 @@ function out = test_cm_and2(showPlot)
     end
 
     tEnd = 15;
-	model_generator("And2_Model");
-	out = model_simulator("And2_Model", tEnd);
+	model_generator("And2CM_Model");
+	out = model_simulator("And2CM_Model", tEnd);
     
     if showPlot
-        figure("name", "testAnd2", "NumberTitle", "off", "Position", [1 1 450 400]);
+        figure("name", "testAnd2CM", "NumberTitle", "off", "Position", [1 1 450 400]);
         subplot(3,1,1)
         plot_ieee1164(out.gen1Out.t, out.gen1Out.y);
         title("A");

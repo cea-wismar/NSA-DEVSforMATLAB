@@ -19,7 +19,7 @@ function [out] = testhIntegrator(showPlot)
 
   Vectorgen1 = devs(am_vectorgen("Vectorgen1", tVec1, yVec1, [0, 1], mdebug));
   hInt = devs(am_hIntegrator("hInt", 0.01, 0.001, 0.0, [0, 1], mdebug));
-  Terminator1 = devs(am_terminator("Terminator1", [0, rOut], mdebug));
+  Terminator1 = devs(am_terminator("Terminator1", false, [0, rOut], mdebug));
   Gen1out = devs(am_toworkspace("Gen1out", "gen1Out", 0, "vector", [0, rOut], mdebug));
   hIntout = devs(am_toworkspace("hIntout", "hIntOut", 0, "vector", [0, rOut], mdebug));
 

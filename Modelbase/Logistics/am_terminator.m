@@ -11,24 +11,27 @@ classdef am_terminator < handle
   %  n:        total number of arrived entities
   %  E:        last incoming entity (for debugging purposes)
   %% System Parameters
-  %  name:  object name
-  %  tau:   input delay
-  %  debug: flag to enable debug information
+  %  name:               object name
+  %  countyEmptyInputs:  flag to enable counting of empty input events
+  %  tau:                input delay
+  %  debug:              flag to enable debug information
 
   properties
     s
     n
     E
+    countyEmptyInputs
     name
     tau
     debug
   end
 
   methods
-    function obj = am_terminator(name, tau, debug)
+    function obj = am_terminator(name, countyEmptyInputs, tau, debug)
       obj.name = name;
       obj.s = "running";
       obj.n = 0;
+      obj.countyEmptyInputs = countyEmptyInputs;
       obj.debug = debug;
       obj.tau = tau;
     end
@@ -39,9 +42,13 @@ classdef am_terminator < handle
         showState(obj);
       end
 
-      if ~isempty(x) && isfield(x,"in") && ~isempty(x.in)
-        obj.n = obj.n + 1;
-        obj.E = x.in;
+      if ~isempty(x) && isfield(x,"in")
+        if ~isempty(x.in)
+          obj.n = obj.n + 1;
+          obj.E = x.in;
+        elseif obj.countyEmptyInputs
+          obj.n = obj.n + 1;
+        end
       end
 
       if obj.debug
@@ -52,8 +59,12 @@ classdef am_terminator < handle
 
     function y=lambda(obj,e,x)
       y=[];
-      if ~isempty(x) && isfield(x,"in") && ~isempty(x.in)
-        y.n = obj.n + 1;
+      if ~isempty(x) && isfield(x,"in")
+        if  ~isempty(x.in)
+          y.n = obj.n + 1;
+        elseif obj.countyEmptyInputs
+          y.n = obj.n + 1;
+        end
       end
 
       if obj.debug
@@ -67,30 +78,21 @@ classdef am_terminator < handle
       t = [Inf,0];
     end
 
+    %---------------------------------------------------------------
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%s", obj.s)
-      fprintf(" n=%1d", obj.n);
-      if ~isempty(obj.E)
-        fprintf(" E=[ %s] ", getDescription(obj.E));
-      end
-      fprintf("\n")
+      fprintf("  phase=%s n=%s E=%s\n", obj.s, ...
+        getDescription(obj.n), getDescription(obj.E));
     end
 
     function showInput(obj, x)
       % debug function, prints current input
-      fprintf("  in: ");
-      if isfield(x, "in")
-        fprintf("[ %s] ", getDescription(x.in));
-      end
+      fprintf("  input:  %s\n", getDescription(x))
     end
 
     function showOutput(obj, y)
       % debug function, prints current output
-      fprintf(", out: ")
-      if isfield(y, "n")
-        fprintf("n=%1d", y.n);
-      end
-      fprintf("\n")
-    end  end
+      fprintf("  output: %s\n", getDescription(y))
+    end
+  end
 end

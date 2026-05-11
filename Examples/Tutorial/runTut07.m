@@ -4,6 +4,7 @@ model = "tut07";
 tEnd = 500;
 seed = 6;
 
+load_system("tutLib");
 model_generator(model); 
 out = model_simulator(model, tEnd, "seed", seed);
 plotResults(out, tEnd)
@@ -16,8 +17,8 @@ height = 350;
 screenSize = get(0, "ScreenSize");
 figureName = "tut07";
 
-tMin = 180;
-tMax = 210;
+tMin = 176;
+tMax = 190;
 
 % open new figure only if necessary
 hFig = findobj("Type", "figure", "Name", figureName);

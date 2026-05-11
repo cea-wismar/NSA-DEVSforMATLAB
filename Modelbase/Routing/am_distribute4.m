@@ -1,6 +1,7 @@
 classdef am_distribute4 < handle
   %% Description
   %  routes entities to one of four outputs according to data field or port input
+  %  doesn't send empty outputs
   %% Ports
   %  inputs:
   %    in        incoming entities
@@ -68,23 +69,11 @@ classdef am_distribute4 < handle
         switch port
           case 1
             y.out1 = x.in;
-            y.out2 = [];
-            y.out3 = [];
-            y.out4 = [];
           case 2
-            y.out1 = [];
             y.out2 = x.in;
-            y.out3 = [];
-            y.out4 = [];
           case 3
-            y.out1 = [];
-            y.out2 = [];
             y.out3 = x.in;
-            y.out4 = [];
           case 4
-            y.out1 = [];
-            y.out2 = [];
-            y.out3 = [];
             y.out4 = x.in;
           otherwise
             fprintf("lambda: wrong port %d in %s\n", port, obj.name);

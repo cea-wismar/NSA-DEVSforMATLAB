@@ -1,6 +1,7 @@
 classdef am_distributeN < handle
   %% Description
   %  routes entities to one of N outputs according to data field or port input
+  %  doesn't send empty outputs
   %% Ports
   %  inputs:
   %    in            incoming entities
@@ -72,8 +73,6 @@ classdef am_distributeN < handle
           outName = "out"+I;
           if I == port
             y.(outName) = x.in;
-          else
-            y.(outName) = [];
           end
         end
       else

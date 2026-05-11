@@ -26,7 +26,7 @@ function [out] = testEnabledGenerator(showPlot)
 
   Generator = devs(am_enabledgenerator("Generator", tG, n0, nG, tD, tau, debug));
   Bingenerator = devs(am_bingenerator("Bingenerator", true, tEnable, tau, debug));
-  Terminator = devs(am_terminator("Terminator", tau, debug));
+  Terminator = devs(am_terminator("Terminator", false, tau, debug));
   Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", tauOut, 0));
   Bingenout = devs(am_toworkspace("Bingenout", "bingenOut", 0, "vector", tauOut, 0));
 
