@@ -75,7 +75,7 @@ classdef am_or2 < handle
       if oNew ~= obj.o || obj.s == "init"
         y.out = oNew;
       else
-        y.out = [];
+        y = [];
       end
 
       if obj.debug
@@ -96,8 +96,8 @@ classdef am_or2 < handle
     %---------------------------------------------------------------
     function showState(obj)
       % debug function, prints current state
-      fprintf("  phase=%s i1=%s i2=%s\n", obj.s, ...
-        getDescription(obj.i1), getDescription(obj.i2));
+      fprintf("  phase=%s i1=%s i2=%s o=%s\n", obj.s, ...
+        getDescription(obj.i1), getDescription(obj.i2), getDescription(obj.o));
     end
 
     function showInput(obj, x)

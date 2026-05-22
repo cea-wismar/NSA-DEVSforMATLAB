@@ -22,7 +22,7 @@ function out = testNotI3e(showPlot)
 
   Vectorgen1 = devs(am_vectorgen("Vectorgen1", tVec1, yVec1, [0, 1], mdebug));
   Notgate = devs(am_notI3e("Notgate", [0,1], mdebug));
-  Terminator = devs(am_terminator("Terminator", [0,rOut], mdebug));
+  Terminator = devs(am_terminator("Terminator", false, [0,rOut], mdebug));
   Gen1out = devs(am_toworkspace("Gen1out", "gen1Out", 0, "vector", [0,rOut], mdebug));
   Notout = devs(am_toworkspace("Notout", "notOut", 0, "vector", [0,rOut], mdebug));
 

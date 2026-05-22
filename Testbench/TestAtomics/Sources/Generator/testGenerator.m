@@ -23,7 +23,7 @@ function [out]=testGenerator(showPlot)
     
     Generator = devs(am_generator("Generator", tG, n0, nG, [0, 1], mdebug));
     Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
-    Terminator = devs(am_terminator("Terminator", [0, 1], mdebug));
+    Terminator = devs(am_terminator("Terminator", false, [0, 1], mdebug));
     
     N1.add_model(Generator);
     N1.add_model(Terminator);

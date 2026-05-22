@@ -17,7 +17,7 @@ function out = testOr2(showPlot)
     pos(3:4) = [width, height];
     set(fig, "Position", pos)
 
-    t = tiledlayout(3,1);
+    t = tiledlayout(4,1);
     t.TileSpacing = "compact";
     t.Padding = "compact";
 
@@ -34,9 +34,14 @@ function out = testOr2(showPlot)
     ylim([-0.1,1.1])
 
     nexttile
-    stairs(out.norOut.t,out.norOut.y, "*-");
+    stairs(out.orOut.t,out.orOut.y, "*-");
     xlim([0, tEnd])
     ylim([-0.1,1.1])
     title("Or2");
+
+    nexttile
+    stem(out.nOut.t, out.nOut.y);
+    title("Terminator");
+    xlim([0, tEnd])
   end
 end

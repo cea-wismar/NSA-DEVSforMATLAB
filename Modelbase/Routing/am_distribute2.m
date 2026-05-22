@@ -1,6 +1,7 @@
 classdef am_distribute2 < handle
   %% Description
   %  routes entities to one of two outputs according to data field or port input
+  %  doesn't send empty outputs
   %% Ports
   %  inputs:
   %    in        incoming entities
@@ -68,9 +69,7 @@ classdef am_distribute2 < handle
         switch port
           case 1
             y.out1 = x.in;
-            y.out2 = [];
           case 2
-            y.out1 = [];
             y.out2 = x.in;
           otherwise
             fprintf("lambda: wrong port %d in %s\n", port, obj.name);

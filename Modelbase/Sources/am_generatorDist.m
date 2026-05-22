@@ -1,9 +1,10 @@
 classdef am_generatorDist < handle
   %% Description
-  % generates entities with distribution-dependent interarrival times and
-  % increasing id's. The first entity is created at t=0 or after a first waiting
-  % time. When generating multiple entities at t=0 using "Constant" [0], the
-  % internal time delay must be adjusted.
+  % Generates entities with interarrival times according to the specified 
+  % distribution and increasing id's. The first entity is created at a given 
+  % time T0 or after a first waiting time, if T0 = -1. 
+  % When generating multiple entities at t=0 using "Constant" [0], the internal
+  % time delay must be adjusted. 
   %% Ports
   %  inputs:  none
   %  outputs:
@@ -22,7 +23,7 @@ classdef am_generatorDist < handle
   %            Triangular   [a,m,b]  [min, most, max]
   %  n0:       id of first entity
   %  nG:       total number of entities to create
-  %  nT0:      flag for generation of 1st entity at t=0
+  %  T0:       generation time of 1st entity or -1 for a first waiting time.
   %  tD:       delay between entities, if "Constant", [0] & nG > 1                                       ***
   %  debug:    flag to enable debug information
 
@@ -36,21 +37,21 @@ classdef am_generatorDist < handle
     distPara
     n0
     nG
-    nT0
+    T0
     tD
     debug
   end
 
   methods
     function obj = am_generatorDist(name, distName, distPara, n0, nG,...
-        nT0, tD, debug)
+        T0, tD, debug)
 
       obj.name     = name;
       obj.distName = distName;
       obj.distPara = distPara;
       obj.n0       = n0;
       obj.nG       = nG;
-      obj.nT0      = nT0;
+      obj.T0      = T0;
       obj.tD       = tD;
       obj.debug = debug;
 
@@ -77,11 +78,10 @@ classdef am_generatorDist < handle
       end
 
       % Init time advance until next entity generation
-      if (obj.nT0)
-        obj.sig = 0;           % gen 1st entity at t=0
-        obj.nT0 = false;
-      else
+      if obj.T0 == -1    % gen 1st entity at t = distributionFcn
         obj.sig = distributionFcn(obj.distName, obj.distPara);
+      else
+        obj.sig = obj.T0; % gen 1st entity at t = nT0
       end
     end
 

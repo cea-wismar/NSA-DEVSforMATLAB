@@ -25,7 +25,7 @@ function [out] = testBatch(showPlot)
 
     Generator = devs(am_generator("Generator", tG, 1, nG, [0,1], mdebug));
     Bat = devs(am_batch("Batch", 10, [0, 1], 0));
-    Terminator = devs(am_terminator("Terminator",[0,1], mdebug));
+    Terminator = devs(am_terminator("Terminator", false,[0,1], mdebug));
     GenOut = devs(am_toworkspace("GenOut", "genOut", 0, "vector",[0,rOut],0));
     Batch_n = devs(am_toworkspace("batch_n", "batch_n", 0, "vector",[0,1],0));
     

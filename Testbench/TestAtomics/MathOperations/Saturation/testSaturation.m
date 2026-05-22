@@ -23,7 +23,7 @@ function [out]=testSaturation(showPlot)
     
     Vectorgen = devs(am_vectorgen("Vectorgen", tVec, yVec, [0, 1], mdebug));
     Saturation = devs(am_saturation("Saturation", -1, 1, [0, 1], mdebug));
-    Terminator1 = devs(am_terminator("Terminator", [0, rOut], mdebug));
+    Terminator1 = devs(am_terminator("Terminator", false, [0, rOut], mdebug));
     Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
     Saturationout = devs(am_toworkspace("Saturationout", "saturationOut", 0, "vector", [0, rOut], mdebug));
     

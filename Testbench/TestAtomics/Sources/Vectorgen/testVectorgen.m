@@ -21,7 +21,7 @@ function [out] = testVectorgen(showPlot)
     N1 = coordinator("N1");
     
     Vectorgen = devs(am_vectorgen("Vectorgen", tVec, yVec, [0, 1], mdebug));
-    Terminator = devs(am_terminator("Terminator", [0, 1], mdebug));
+    Terminator = devs(am_terminator("Terminator", false, [0, 1], mdebug));
     Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
     
     N1.add_model(Vectorgen);
