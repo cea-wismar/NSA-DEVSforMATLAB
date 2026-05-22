@@ -43,6 +43,13 @@ function test_blocklib_gate(testCase)
   verifyEqual(testCase, act_out, testGate_out)
   rmpath("TestBlocklib/Logistics/Gate");
 end
+function test_blocklib_singlehold(testCase)
+  addpath("TestBlocklib/Logistics/SingleHold");
+  act_out = testSingleHold();
+  load("testSingleHold_out.mat");
+  verifyEqual(testCase, act_out, testSingleHold_out)
+  rmpath("TestBlocklib/Logistics/SingleHold");
+end
 function test_blocklib_isentity(testCase)
   addpath("TestBlocklib/Logistics/Isentity");
   act_out = testIsentity();
@@ -246,6 +253,13 @@ function test_blocklib_terminator(testCase)
   verifyEqual(testCase, act_out, testTerminator_out)
   rmpath("TestBlocklib/Logistics/Terminator");
 end
+function test_blocklib_terminator1(testCase)
+  addpath("TestBlocklib/Logistics/Terminator");
+  act_out = testTerminator1();
+  load("testTerminator1_out.mat");
+  verifyEqual(testCase, act_out, testTerminator1_out)
+  rmpath("TestBlocklib/Logistics/Terminator");
+end
 function test_blocklib_unbatch(testCase)
   addpath("TestBlocklib/Logistics/Unbatch");
   act_out = testUnbatch();
@@ -379,6 +393,13 @@ function test_blocklib_not(testCase)
   load("testNot_out.mat");
   verifyEqual(testCase, act_out, testNot_out)
   rmpath("TestBlocklib/MathOperations/Not");
+end
+function test_blocklib_and2(testCase)
+  addpath("TestBlocklib/MathOperations/And2");
+  act_out = testAnd2();
+  load("testAnd2_out.mat");
+  verifyEqual(testCase, act_out, testAnd2_out)
+  rmpath("TestBlocklib/MathOperations/And2");
 end
 function test_blocklib_or2(testCase)
   addpath("TestBlocklib/MathOperations/Or2");

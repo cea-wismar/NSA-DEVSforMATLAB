@@ -23,7 +23,7 @@ function [out]=testBias(showPlot)
 
   Vectorgen = devs(am_vectorgen("Vectorgen", tVec, yVec, [0, 1], mdebug));
   Bias = devs(am_bias("Bias", bias, [0, 1],mdebug));
-  Terminator1 = devs(am_terminator("Terminator", [0, rOut], mdebug));
+  Terminator1 = devs(am_terminator("Terminator", false, [0, rOut], mdebug));
   Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
   Biasout = devs(am_toworkspace("Biasout", "gainOut", 0, "vector", [0, rOut], mdebug));
 

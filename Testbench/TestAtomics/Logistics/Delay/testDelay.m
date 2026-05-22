@@ -21,7 +21,7 @@ function out = testDelay(showPlot)
 	
   	Vectorgen = devs(am_vectorgen("Vectorgen", tVec, yVec, [0, 1], mdebug));
   	Delay = devs(am_delay("Delay", g, [0, 1], mdebug));
-  	Terminator1 = devs(am_terminator("Terminator1", [0, rOut], mdebug));
+  	Terminator1 = devs(am_terminator("Terminator1", false, [0, rOut], mdebug));
   	Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
   	Delayout = devs(am_toworkspace("Delayout", "DelayOut", 0, "vector", [0, rOut], mdebug));
 	

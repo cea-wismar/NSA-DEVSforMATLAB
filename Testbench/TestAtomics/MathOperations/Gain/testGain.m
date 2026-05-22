@@ -23,7 +23,7 @@ function [out]=testGain(showPlot)
     
     Vectorgen = devs(am_vectorgen("Vectorgen", tVec, yVec, [0, 1], mdebug));
     Gain = devs(am_gain("Gain", g, [0, 1],mdebug));
-    Terminator1 = devs(am_terminator("Terminator", [0, rOut], mdebug));
+    Terminator1 = devs(am_terminator("Terminator", false, [0, rOut], mdebug));
     Genout = devs(am_toworkspace("Genout", "genOut", 0, "vector", [0, rOut], mdebug));
     Gainout = devs(am_toworkspace("Gainout", "gainOut", 0, "vector", [0, rOut], mdebug));
     

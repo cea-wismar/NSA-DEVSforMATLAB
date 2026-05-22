@@ -34,7 +34,7 @@ function [out] = testServer(testcase, showPlot)
 	
 	Generator = devs(am_generator("Generator", tG, 1, 5, [0, 1], mdebug));
 	Server = devs(am_server("Server", tS, "", [0, 1], mdebug));
-	Terminator = devs(am_terminator("Terminator", [0, 1], mdebug));
+	Terminator = devs(am_terminator("Terminator", false, [0, 1], mdebug));
 	GenOut = devs(am_toworkspace("GenOut", "genOut", 0, "vector", [0, rOut], mdebug));
 	SrvOut = devs(am_toworkspace("SrvOut", "srvOut", 0, "vector", [0, rOut], mdebug));
 	SrvNOut = devs(am_toworkspace("SrvNOut", "srvnOut", 0, "vector", [0, rOut], mdebug));

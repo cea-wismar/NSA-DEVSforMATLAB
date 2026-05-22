@@ -22,7 +22,7 @@ function [out] = testBingenerator(showPlot)
     N1 = coordinator('N1');
 
     Bingenerator = devs(am_bingenerator("Bingenerator", s0, tVec, [0,1], mdebug));
-    Terminator = devs(am_terminator("Terminator", [0,rOut], mdebug));
+    Terminator = devs(am_terminator("Terminator", false, [0,rOut], mdebug));
     Binout = devs(am_toworkspace("Binout", "binOut", 0, "vector", [0,rOut], mdebug));
 
     N1.add_model(Bingenerator);

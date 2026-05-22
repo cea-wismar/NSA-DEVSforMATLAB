@@ -66,7 +66,7 @@ classdef am_not < handle
       if oNew ~= obj.o || obj.s == "init"
         y.out = oNew;
       else
-        y.out = [];
+        y = [];
       end
      
       if obj.debug
