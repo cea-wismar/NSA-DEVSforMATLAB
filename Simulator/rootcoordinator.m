@@ -46,7 +46,7 @@ classdef rootcoordinator
       end
       t=obj.mdl.get_tn();
       if obj.display == 1
-        fprintf("t: %.2f + %.2f \x03b5\n", t(1), t(2))
+        fprintf("t: %.2f + %.2f ε\n", t(1), t(2))
       end
       while (t(1) <= obj.tend(1) && stop)
         obj.mdl.smessage(t);
@@ -64,7 +64,7 @@ classdef rootcoordinator
           t=obj.mdl.get_tn();
         end
         if obj.display == 1
-          fprintf("t: %.2f + %.2f \x03b5\n", t(1), t(2))
+          fprintf("t: %.2f + %.2f ε\n", t(1), t(2))
         end
         if(obj.stepwise)
           pause();
