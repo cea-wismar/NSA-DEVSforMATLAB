@@ -15,6 +15,13 @@ function test_blocklib_adddata(testCase)
   verifyEqual(testCase, act_out, testAdddata_out)
   rmpath("TestBlocklib/Logistics/Adddata");
 end
+function test_blocklib_adddata1(testCase)
+  addpath("TestBlocklib/Logistics/Adddata");
+  act_out = testAdddata1();
+  load("testAdddata1_out.mat");
+  verifyEqual(testCase, act_out, testAdddata1_out)
+  rmpath("TestBlocklib/Logistics/Adddata");
+end
 function test_blocklib_batch(testCase)
   addpath("TestBlocklib/Logistics/Batch");
   act_out = testBatch();
